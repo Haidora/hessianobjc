@@ -1,8 +1,0 @@
-HessianObjC Change log:
-
-0.6
-
-- Added ref support
-- Fixed memory leak in HessianCall class
-- Fixed bug when sending NSData
-- Fixed encoding of NSCalendarDate
