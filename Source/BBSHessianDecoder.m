@@ -209,17 +209,31 @@ static NSMutableDictionary * gClassMapping;
     if(len == 0) {
         return @"";
     }
-    //alloc enough memory for the string +1 for null terminator
-    uint8_t * readData = malloc((len+1) * sizeof(uint8_t));      
-    if(readData == NULL) {
-       NSLog(@"failed to alloc memory for string with len =%i",len);
-       return @"";
-    }  
-    //set all to null.
-    memset(readData,0,len+1);        
-    [dataInputStream read:readData maxLength:len]; 
-    NSString * retString = [NSString stringWithUTF8String:(const char *)readData] ;
-    free(readData);
+	//decoder string from hessiankit
+	NSMutableString *retString = [NSMutableString stringWithCapacity:len];
+	for (int index = 0; index<len; index++)
+	{
+		unichar ch = '0';
+		[dataInputStream read:(uint8_t *)&ch maxLength:1];
+		if (ch < 0x80)
+		{
+		}
+		else if ((ch & 0xe0) == 0xc0)
+		{
+			unichar ch1 = '0';
+			[dataInputStream read:(uint8_t *)&ch1 maxLength:1];
+			ch = ((ch & 0x1f) << 6) + (ch1 & 0x3f);
+		}
+		else if ((ch & 0xf0) == 0xe0)
+		{
+			unichar ch1 = '0';
+			[dataInputStream read:(uint8_t *)&ch1 maxLength:1];
+			unichar ch2 = '0';
+			[dataInputStream read:(uint8_t *)&ch2 maxLength:1];
+			ch = ((ch & 0x0f) << 12) + ((ch1 & 0x3f) << 6)+ (ch2 & 0x3f);
+		}
+		[retString appendString:[NSString stringWithCharacters:&ch length:1]];
+	}
     return retString;
 }
 
