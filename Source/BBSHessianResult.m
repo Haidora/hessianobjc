@@ -58,7 +58,7 @@
             NSLog(@"could alloc memory for result");
             return nil;
         }
-        [data getBytes:bytes range:NSMakeRange(3,[data length]-1)];        
+        [data getBytes:bytes range:NSMakeRange(3,[data length]-4)];
         //calling dataWithBytesNoCopy allows the resultsValueData to free the bytes that where malloced and is more effecient
         NSData * resultValueData = [NSData dataWithBytesNoCopy:bytes length:[data length]-4];     
         BBSHessianDecoder * decoder = [[BBSHessianDecoder alloc] initForReadingWithData:resultValueData];
