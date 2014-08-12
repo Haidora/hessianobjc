@@ -28,8 +28,11 @@
     char majorVersion;
     char minorVersion;
     /*NSMutableDictionary * headers;*/
+	NSString *remoteClassPrefix;
 }
 
+
+-(void)setRemoteClassPrefix:(NSString *)aRemoteClassPrefix;
 /** initialize a Hessian call with a remote method name. 
   * eg. If the remote method has the following signature: public java.lang.Object echo(java.lang.Object value)
   * simple pass @"echo" has the remote method name.

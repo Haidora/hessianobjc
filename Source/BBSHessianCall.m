@@ -30,6 +30,11 @@
 
 @implementation BBSHessianCall
 
+-(void)setRemoteClassPrefix:(NSString *)aRemoteClassPrefix
+{
+	remoteClassPrefix = aRemoteClassPrefix;
+}
+
 - (id) initWithRemoteMethodName:(NSString *) aMethodName {
     if((self = [super init]) != nil) {                        
         methodName = aMethodName;
@@ -69,7 +74,10 @@
         NSEnumerator * e = [parameters objectEnumerator];
         id current ;
         while(current = [e nextObject]) {
-            [callData appendData:[BBSHessianEncoder dataWithRootObject:current]];
+			BBSHessianEncoder *encoder = [[BBSHessianEncoder alloc]init];
+			[encoder setRemoteClassPrefix:remoteClassPrefix];
+			[encoder encodeObject:current];
+            [callData appendData:[encoder data]];
         }
         [self endCall];
     }    

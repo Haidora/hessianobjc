@@ -27,10 +27,13 @@
     @private
     NSURL * serviceUrl;
     NSURLConnection * remoteConnection;
+	NSString *remoteClassPrefix;
 }
 /** Initialize with Hessian web service end point.
   */
 - (id) initWithUrl:(NSURL * ) aServiceUrl;
+
+-(void)setRemoteClassPrefix:(NSString *)aRemoteClassPrefix;
 
 /** @return the Url service end point */
 - (NSURL *) serviceUrl;

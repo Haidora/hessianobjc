@@ -53,6 +53,11 @@
 
 static NSMutableDictionary * gClassMapping;
 
+-(void)setRemoteClassPrefix:(NSString *)aRemoteClassPrefix
+{
+	remoteClassPrefix = aRemoteClassPrefix;
+}
+
 + (void) initialize {
     gClassMapping = [NSMutableDictionary dictionary];
 }
@@ -333,6 +338,10 @@ static NSMutableDictionary * gClassMapping;
     if(!mappedClass) { //try the global mapping
         mappedClass = [BBSHessianDecoder classForClassName:type];
     }
+	if (!mappedClass) {
+		NSString *localClass = [type stringByReplacingOccurrencesOfString:remoteClassPrefix?:@"" withString:@""];
+		mappedClass = NSClassFromString(localClass);
+	}
     if(mappedClass) {
         [dict setObject:NSStringFromClass(mappedClass) forKey:BBSHessianClassNameKey];
     }

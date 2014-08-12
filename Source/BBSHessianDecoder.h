@@ -28,7 +28,9 @@
     NSMutableArray * typeMap;
     NSMutableArray * objectDefinitionMap;
     NSMutableDictionary * fieldsByTypeName;
+	NSString *remoteClassPrefix;
 }
+-(void)setRemoteClassPrefix:(NSString *)aRemoteClassPrefix;
 
 /** Static method that decodes an object encoded in Hessian binary protocol and returns the object value.
   * @param someData should be data encoded in Hessian binary format.

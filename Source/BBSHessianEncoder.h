@@ -22,9 +22,10 @@
     @private
     NSMutableData * callData;
     NSMutableDictionary * classMapping;
+	NSString *remoteClassPrefix;
 }
 
-
+-(void)setRemoteClassPrefix:(NSString *)aRemoteClassPrefix;
 
 /** Initialize with data that all encoded objects will be appened to.
   * This method usually isn't used directly. 

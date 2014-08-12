@@ -25,8 +25,10 @@
     id resultValue;
     int majorVersion;
     int minorVersion;
+	NSString *remoteClassPrefix;
 }
 
+-(void)setRemoteClassPrefix:(NSString *)aRemoteClassPrefix;
 /** Instantiate and initialize with data that will be decoded from Hessian format.
   * @param someData is NSData encoded in Hessian binary format 
   */

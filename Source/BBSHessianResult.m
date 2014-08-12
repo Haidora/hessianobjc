@@ -22,6 +22,11 @@
 
 @implementation BBSHessianResult
 
+-(void)setRemoteClassPrefix:(NSString *)aRemoteClassPrefix
+{
+	remoteClassPrefix = aRemoteClassPrefix;
+}
+
 - (id) initForReadingWithData:(NSData *) someData {
     if((self = [super init]) != nil) {
         data = someData;        
@@ -62,6 +67,7 @@
         //calling dataWithBytesNoCopy allows the resultsValueData to free the bytes that where malloced and is more effecient
         NSData * resultValueData = [NSData dataWithBytesNoCopy:bytes length:[data length]-4];     
         BBSHessianDecoder * decoder = [[BBSHessianDecoder alloc] initForReadingWithData:resultValueData];
+		[decoder setRemoteClassPrefix:remoteClassPrefix];
         id obj =[decoder decodedObject];
         //TODO: ideally we should make sure the last char in the stream after the result is a 'z'
         //I am ingoring this for now

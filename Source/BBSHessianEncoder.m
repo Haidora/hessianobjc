@@ -44,6 +44,11 @@
 
 static NSMutableDictionary * gClassMapping;
 
+-(void)setRemoteClassPrefix:(NSString *)aRemoteClassPrefix
+{
+	remoteClassPrefix = aRemoteClassPrefix;
+}
+
 + (void) initialize {
     gClassMapping = [NSMutableDictionary dictionary];
 }
@@ -164,6 +169,12 @@ static NSMutableDictionary * gClassMapping;
             //check global mappings
             className = [BBSHessianEncoder classNameForClass:[anObject class]];
         }
+		//set default remote class name
+		if (!className)
+		{
+			className = [NSString stringWithFormat:@"%@%@",remoteClassPrefix,NSStringFromClass([anObject class])];
+		}
+		
         //put the type in if a mapping exists
         if(className) {
             char t = 't';

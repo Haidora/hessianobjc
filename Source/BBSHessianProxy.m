@@ -32,6 +32,11 @@
     return self;
 }
 
+-(void)setRemoteClassPrefix:(NSString *)aRemoteClassPrefix
+{
+	remoteClassPrefix = aRemoteClassPrefix;
+}
+
 - (NSURL *) serviceUrl {
     return serviceUrl; 
 }
@@ -44,6 +49,7 @@
         withParameters:(NSArray *) parameters {
     
     BBSHessianCall * hessianRequest = [[BBSHessianCall alloc] initWithRemoteMethodName:methodName];
+	[hessianRequest setRemoteClassPrefix:remoteClassPrefix];
     
     [hessianRequest setParameters:parameters];
     
@@ -69,6 +75,7 @@
             if([returnResponse statusCode] == 200) { /* all went well */
                 //deserialize the data
                 BBSHessianResult * response = [[BBSHessianResult alloc] initForReadingWithData:retData];
+				[response setRemoteClassPrefix:remoteClassPrefix];
                 id decodedObject = [response resultValue];
                 return decodedObject;
                 
