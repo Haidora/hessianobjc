@@ -22,14 +22,16 @@
 		AB6080761998A2CA0093AA94 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB6080551998A2CA0093AA94 /* UIKit.framework */; };
 		AB60807E1998A2CA0093AA94 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB60807C1998A2CA0093AA94 /* InfoPlist.strings */; };
 		AB6080801998A2CA0093AA94 /* HessianObjCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB60807F1998A2CA0093AA94 /* HessianObjCTests.m */; };
-		AB60809B1998A2E50093AA94 /* BBSHessianCall.m in Sources */ = {isa = PBXBuildFile; fileRef = AB60808B1998A2E50093AA94 /* BBSHessianCall.m */; };
-		AB60809C1998A2E50093AA94 /* BBSHessianDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = AB60808D1998A2E50093AA94 /* BBSHessianDecoder.m */; };
-		AB60809D1998A2E50093AA94 /* BBSHessianEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = AB60808F1998A2E50093AA94 /* BBSHessianEncoder.m */; };
-		AB60809E1998A2E50093AA94 /* BBSHessianInvocation.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6080911998A2E50093AA94 /* BBSHessianInvocation.m */; };
-		AB60809F1998A2E50093AA94 /* BBSHessianMapDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6080931998A2E50093AA94 /* BBSHessianMapDecoder.m */; };
-		AB6080A01998A2E50093AA94 /* BBSHessianObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6080951998A2E50093AA94 /* BBSHessianObjC.m */; };
-		AB6080A11998A2E50093AA94 /* BBSHessianProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6080981998A2E50093AA94 /* BBSHessianProxy.m */; };
-		AB6080A21998A2E50093AA94 /* BBSHessianResult.m in Sources */ = {isa = PBXBuildFile; fileRef = AB60809A1998A2E50093AA94 /* BBSHessianResult.m */; };
+		AB6081501998A91F0093AA94 /* BBSHessianCall.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6081401998A91F0093AA94 /* BBSHessianCall.m */; };
+		AB6081511998A91F0093AA94 /* BBSHessianDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6081421998A91F0093AA94 /* BBSHessianDecoder.m */; };
+		AB6081521998A91F0093AA94 /* BBSHessianEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6081441998A91F0093AA94 /* BBSHessianEncoder.m */; };
+		AB6081531998A91F0093AA94 /* BBSHessianInvocation.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6081461998A91F0093AA94 /* BBSHessianInvocation.m */; };
+		AB6081541998A91F0093AA94 /* BBSHessianMapDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6081481998A91F0093AA94 /* BBSHessianMapDecoder.m */; };
+		AB6081551998A91F0093AA94 /* BBSHessianObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = AB60814A1998A91F0093AA94 /* BBSHessianObjC.m */; };
+		AB6081561998A91F0093AA94 /* BBSHessianProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB60814D1998A91F0093AA94 /* BBSHessianProxy.m */; };
+		AB6081571998A91F0093AA94 /* BBSHessianResult.m in Sources */ = {isa = PBXBuildFile; fileRef = AB60814F1998A91F0093AA94 /* BBSHessianResult.m */; };
+		ABCB03F9199A16ED008DA842 /* BBSDistantHessianObject.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCB03F8199A16ED008DA842 /* BBSDistantHessianObject.m */; };
+		BF1C7295EA364059B326F15A /* libPods-HessianObjC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94BDD74D46094249A4D44383 /* libPods-HessianObjC.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		94BDD74D46094249A4D44383 /* libPods-HessianObjC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HessianObjC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		96A146F55DA24EDC82081866 /* Pods-HessianObjC.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HessianObjC.xcconfig"; path = "Pods/Pods-HessianObjC.xcconfig"; sourceTree = "<group>"; };
 		AB60804E1998A2CA0093AA94 /* HessianObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HessianObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB6080511998A2CA0093AA94 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AB6080531998A2CA0093AA94 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -63,23 +67,25 @@
 		AB60807B1998A2CA0093AA94 /* HessianObjCTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HessianObjCTests-Info.plist"; sourceTree = "<group>"; };
 		AB60807D1998A2CA0093AA94 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AB60807F1998A2CA0093AA94 /* HessianObjCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HessianObjCTests.m; sourceTree = "<group>"; };
-		AB60808A1998A2E50093AA94 /* BBSHessianCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSHessianCall.h; sourceTree = "<group>"; };
-		AB60808B1998A2E50093AA94 /* BBSHessianCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSHessianCall.m; sourceTree = "<group>"; };
-		AB60808C1998A2E50093AA94 /* BBSHessianDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSHessianDecoder.h; sourceTree = "<group>"; };
-		AB60808D1998A2E50093AA94 /* BBSHessianDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSHessianDecoder.m; sourceTree = "<group>"; };
-		AB60808E1998A2E50093AA94 /* BBSHessianEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSHessianEncoder.h; sourceTree = "<group>"; };
-		AB60808F1998A2E50093AA94 /* BBSHessianEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSHessianEncoder.m; sourceTree = "<group>"; };
-		AB6080901998A2E50093AA94 /* BBSHessianInvocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSHessianInvocation.h; sourceTree = "<group>"; };
-		AB6080911998A2E50093AA94 /* BBSHessianInvocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSHessianInvocation.m; sourceTree = "<group>"; };
-		AB6080921998A2E50093AA94 /* BBSHessianMapDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSHessianMapDecoder.h; sourceTree = "<group>"; };
-		AB6080931998A2E50093AA94 /* BBSHessianMapDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSHessianMapDecoder.m; sourceTree = "<group>"; };
-		AB6080941998A2E50093AA94 /* BBSHessianObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSHessianObjC.h; sourceTree = "<group>"; };
-		AB6080951998A2E50093AA94 /* BBSHessianObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSHessianObjC.m; sourceTree = "<group>"; };
-		AB6080961998A2E50093AA94 /* BBSHessianObjCDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSHessianObjCDefines.h; sourceTree = "<group>"; };
-		AB6080971998A2E50093AA94 /* BBSHessianProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSHessianProxy.h; sourceTree = "<group>"; };
-		AB6080981998A2E50093AA94 /* BBSHessianProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSHessianProxy.m; sourceTree = "<group>"; };
-		AB6080991998A2E50093AA94 /* BBSHessianResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSHessianResult.h; sourceTree = "<group>"; };
-		AB60809A1998A2E50093AA94 /* BBSHessianResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSHessianResult.m; sourceTree = "<group>"; };
+		AB60813F1998A91F0093AA94 /* BBSHessianCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSHessianCall.h; sourceTree = "<group>"; };
+		AB6081401998A91F0093AA94 /* BBSHessianCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSHessianCall.m; sourceTree = "<group>"; };
+		AB6081411998A91F0093AA94 /* BBSHessianDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSHessianDecoder.h; sourceTree = "<group>"; };
+		AB6081421998A91F0093AA94 /* BBSHessianDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSHessianDecoder.m; sourceTree = "<group>"; };
+		AB6081431998A91F0093AA94 /* BBSHessianEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSHessianEncoder.h; sourceTree = "<group>"; };
+		AB6081441998A91F0093AA94 /* BBSHessianEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSHessianEncoder.m; sourceTree = "<group>"; };
+		AB6081451998A91F0093AA94 /* BBSHessianInvocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSHessianInvocation.h; sourceTree = "<group>"; };
+		AB6081461998A91F0093AA94 /* BBSHessianInvocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSHessianInvocation.m; sourceTree = "<group>"; };
+		AB6081471998A91F0093AA94 /* BBSHessianMapDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSHessianMapDecoder.h; sourceTree = "<group>"; };
+		AB6081481998A91F0093AA94 /* BBSHessianMapDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSHessianMapDecoder.m; sourceTree = "<group>"; };
+		AB6081491998A91F0093AA94 /* BBSHessianObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSHessianObjC.h; sourceTree = "<group>"; };
+		AB60814A1998A91F0093AA94 /* BBSHessianObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSHessianObjC.m; sourceTree = "<group>"; };
+		AB60814B1998A91F0093AA94 /* BBSHessianObjCDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSHessianObjCDefines.h; sourceTree = "<group>"; };
+		AB60814C1998A91F0093AA94 /* BBSHessianProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSHessianProxy.h; sourceTree = "<group>"; };
+		AB60814D1998A91F0093AA94 /* BBSHessianProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSHessianProxy.m; sourceTree = "<group>"; };
+		AB60814E1998A91F0093AA94 /* BBSHessianResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSHessianResult.h; sourceTree = "<group>"; };
+		AB60814F1998A91F0093AA94 /* BBSHessianResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSHessianResult.m; sourceTree = "<group>"; };
+		ABCB03F7199A16ED008DA842 /* BBSDistantHessianObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSDistantHessianObject.h; sourceTree = "<group>"; };
+		ABCB03F8199A16ED008DA842 /* BBSDistantHessianObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSDistantHessianObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,7 @@
 				AB6080541998A2CA0093AA94 /* CoreGraphics.framework in Frameworks */,
 				AB6080561998A2CA0093AA94 /* UIKit.framework in Frameworks */,
 				AB6080521998A2CA0093AA94 /* Foundation.framework in Frameworks */,
+				BF1C7295EA364059B326F15A /* libPods-HessianObjC.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,11 +116,12 @@
 		AB6080451998A2CA0093AA94 = {
 			isa = PBXGroup;
 			children = (
-				AB6080891998A2E50093AA94 /* Source */,
+				AB60813E1998A91F0093AA94 /* Source */,
 				AB6080571998A2CA0093AA94 /* HessianObjC */,
 				AB6080791998A2CA0093AA94 /* HessianObjCTests */,
 				AB6080501998A2CA0093AA94 /* Frameworks */,
 				AB60804F1998A2CA0093AA94 /* Products */,
+				96A146F55DA24EDC82081866 /* Pods-HessianObjC.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -133,6 +141,7 @@
 				AB6080531998A2CA0093AA94 /* CoreGraphics.framework */,
 				AB6080551998A2CA0093AA94 /* UIKit.framework */,
 				AB6080731998A2CA0093AA94 /* XCTest.framework */,
+				94BDD74D46094249A4D44383 /* libPods-HessianObjC.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -181,29 +190,31 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		AB6080891998A2E50093AA94 /* Source */ = {
+		AB60813E1998A91F0093AA94 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				AB60808A1998A2E50093AA94 /* BBSHessianCall.h */,
-				AB60808B1998A2E50093AA94 /* BBSHessianCall.m */,
-				AB60808C1998A2E50093AA94 /* BBSHessianDecoder.h */,
-				AB60808D1998A2E50093AA94 /* BBSHessianDecoder.m */,
-				AB60808E1998A2E50093AA94 /* BBSHessianEncoder.h */,
-				AB60808F1998A2E50093AA94 /* BBSHessianEncoder.m */,
-				AB6080901998A2E50093AA94 /* BBSHessianInvocation.h */,
-				AB6080911998A2E50093AA94 /* BBSHessianInvocation.m */,
-				AB6080921998A2E50093AA94 /* BBSHessianMapDecoder.h */,
-				AB6080931998A2E50093AA94 /* BBSHessianMapDecoder.m */,
-				AB6080941998A2E50093AA94 /* BBSHessianObjC.h */,
-				AB6080951998A2E50093AA94 /* BBSHessianObjC.m */,
-				AB6080961998A2E50093AA94 /* BBSHessianObjCDefines.h */,
-				AB6080971998A2E50093AA94 /* BBSHessianProxy.h */,
-				AB6080981998A2E50093AA94 /* BBSHessianProxy.m */,
-				AB6080991998A2E50093AA94 /* BBSHessianResult.h */,
-				AB60809A1998A2E50093AA94 /* BBSHessianResult.m */,
+				AB60813F1998A91F0093AA94 /* BBSHessianCall.h */,
+				AB6081401998A91F0093AA94 /* BBSHessianCall.m */,
+				AB6081411998A91F0093AA94 /* BBSHessianDecoder.h */,
+				AB6081421998A91F0093AA94 /* BBSHessianDecoder.m */,
+				AB6081431998A91F0093AA94 /* BBSHessianEncoder.h */,
+				AB6081441998A91F0093AA94 /* BBSHessianEncoder.m */,
+				AB6081451998A91F0093AA94 /* BBSHessianInvocation.h */,
+				AB6081461998A91F0093AA94 /* BBSHessianInvocation.m */,
+				AB6081471998A91F0093AA94 /* BBSHessianMapDecoder.h */,
+				AB6081481998A91F0093AA94 /* BBSHessianMapDecoder.m */,
+				AB6081491998A91F0093AA94 /* BBSHessianObjC.h */,
+				AB60814A1998A91F0093AA94 /* BBSHessianObjC.m */,
+				AB60814B1998A91F0093AA94 /* BBSHessianObjCDefines.h */,
+				AB60814C1998A91F0093AA94 /* BBSHessianProxy.h */,
+				AB60814D1998A91F0093AA94 /* BBSHessianProxy.m */,
+				AB60814E1998A91F0093AA94 /* BBSHessianResult.h */,
+				AB60814F1998A91F0093AA94 /* BBSHessianResult.m */,
+				ABCB03F7199A16ED008DA842 /* BBSDistantHessianObject.h */,
+				ABCB03F8199A16ED008DA842 /* BBSDistantHessianObject.m */,
 			);
 			name = Source;
-			path = ../Source;
+			path = ../../Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,9 +224,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB6080831998A2CA0093AA94 /* Build configuration list for PBXNativeTarget "HessianObjC" */;
 			buildPhases = (
+				4DBE358394A847FC90A64DDA /* Check Pods Manifest.lock */,
 				AB60804A1998A2CA0093AA94 /* Sources */,
 				AB60804B1998A2CA0093AA94 /* Frameworks */,
 				AB60804C1998A2CA0093AA94 /* Resources */,
+				F77888D647B14BD18957F427 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -299,22 +312,56 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4DBE358394A847FC90A64DDA /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F77888D647B14BD18957F427 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-HessianObjC-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AB60804A1998A2CA0093AA94 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB6080A21998A2E50093AA94 /* BBSHessianResult.m in Sources */,
+				AB6081571998A91F0093AA94 /* BBSHessianResult.m in Sources */,
 				AB60806B1998A2CA0093AA94 /* ViewController.m in Sources */,
-				AB60809B1998A2E50093AA94 /* BBSHessianCall.m in Sources */,
-				AB60809D1998A2E50093AA94 /* BBSHessianEncoder.m in Sources */,
-				AB60809C1998A2E50093AA94 /* BBSHessianDecoder.m in Sources */,
-				AB6080A01998A2E50093AA94 /* BBSHessianObjC.m in Sources */,
-				AB60809E1998A2E50093AA94 /* BBSHessianInvocation.m in Sources */,
-				AB6080A11998A2E50093AA94 /* BBSHessianProxy.m in Sources */,
+				AB6081501998A91F0093AA94 /* BBSHessianCall.m in Sources */,
+				AB6081521998A91F0093AA94 /* BBSHessianEncoder.m in Sources */,
+				ABCB03F9199A16ED008DA842 /* BBSDistantHessianObject.m in Sources */,
+				AB6081511998A91F0093AA94 /* BBSHessianDecoder.m in Sources */,
+				AB6081551998A91F0093AA94 /* BBSHessianObjC.m in Sources */,
+				AB6081531998A91F0093AA94 /* BBSHessianInvocation.m in Sources */,
+				AB6081561998A91F0093AA94 /* BBSHessianProxy.m in Sources */,
 				AB6080621998A2CA0093AA94 /* AppDelegate.m in Sources */,
 				AB60805E1998A2CA0093AA94 /* main.m in Sources */,
-				AB60809F1998A2E50093AA94 /* BBSHessianMapDecoder.m in Sources */,
+				AB6081541998A91F0093AA94 /* BBSHessianMapDecoder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +493,7 @@
 		};
 		AB6080841998A2CA0093AA94 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96A146F55DA24EDC82081866 /* Pods-HessianObjC.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -459,6 +507,7 @@
 		};
 		AB6080851998A2CA0093AA94 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96A146F55DA24EDC82081866 /* Pods-HessianObjC.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -529,6 +578,7 @@
 				AB6080851998A2CA0093AA94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AB6080861998A2CA0093AA94 /* Build configuration list for PBXNativeTarget "HessianObjCTests" */ = {
 			isa = XCConfigurationList;
@@ -537,6 +587,7 @@
 				AB6080881998A2CA0093AA94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

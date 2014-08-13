@@ -7,6 +7,14 @@
 //
 
 #import "ViewController.h"
+#import "BBSDistantHessianObject.h"
+
+@protocol Test <NSObject>
+
+-(NSString *)test:(NSString *)testa b:(NSString *)testb;
+-(void)testa;
+
+@end
 
 @interface ViewController ()
 
@@ -18,6 +26,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+
+ id<Test> test = 	HessianSrvPUMMR(Test, @"", nil, nil);
+	[test test:@"1" b:@"2"];
+	[test testa];
 }
 
 - (void)didReceiveMemoryWarning

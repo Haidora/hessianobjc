@@ -7,6 +7,14 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "BBSDistantHessianObject.h"
+
+@protocol Test <NSObject>
+
+-(NSString *)test:(NSString *)a b:(NSString *)b;
+
+@end
+
 
 @interface HessianObjCTests : XCTestCase
 
@@ -28,7 +36,10 @@
 
 - (void)testExample
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+	BBSDistantHessianObject *object = [BBSDistantHessianObject proxyWithProtocol:@protocol(Test)];
+	id<Test> test = (id<Test>)object;
+	id result = [test test:@"1" b:@"2"];
+	NSLog(@"%@",result);
 }
 
 @end
