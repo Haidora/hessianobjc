@@ -23,6 +23,7 @@
 #import "BBSHessianResult.h"
 #import "BBSHessianMapDecoder.h"
 #import "BBSHessianProxy.h"
+#import "BBSDistantHessianObject.h"
 
 
 /** \mainpage

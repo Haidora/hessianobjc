@@ -59,18 +59,10 @@ static NSMethodSignature* getMethodSignatureRecursively(Protocol *p, SEL aSel)
 
 - (void)forwardInvocation:(NSInvocation *)invocation
 {
-	NSInteger numberOfArguments = [[invocation methodSignature] numberOfArguments];
 #ifdef DEBUG
 	NSLog(@"Forward method %@ for proxy %@", NSStringFromSelector([invocation selector]),NSStringFromProtocol(protocol));
-	NSLog(@"Hessian Request Argument Start=============================\n");
-	for (int i=2; i<numberOfArguments; i++)
-	{
-		id argument;
-		[invocation getArgument:&argument atIndex:i];
-		NSLog(@"\n\n%@\n\n%@\n",NSStringFromClass([argument class]),argument);
-	}
-	NSLog(@"Hessian Request Argument End=============================\n");
 #endif
+	NSInteger numberOfArguments = [[invocation methodSignature] numberOfArguments];
 	[BBSHessianProxy setClassMapping:self.classMapping];
 	BBSHessianProxy *proxy = [[BBSHessianProxy alloc]initWithUrl:[NSURL URLWithString:self.urlString]];
 	[proxy setRemoteClassPrefix:self.remoteClassPrefix];
@@ -81,16 +73,67 @@ static NSMethodSignature* getMethodSignatureRecursively(Protocol *p, SEL aSel)
 	{
 		arguments = [NSMutableArray array];
 	}
+#ifdef DEBUG
+	NSLog(@"Hessian Request Argument Start=============================\n");
+#endif
+	NSMethodSignature* signature = [invocation methodSignature];
 	for (int i=2; i<numberOfArguments; i++)
 	{
-		id argument;
-		[invocation getArgument:&argument atIndex:i];
-		[arguments addObject:argument];
+		const char *argumentType = [signature getArgumentTypeAtIndex:i];
+		id objectValue = [self getObjectValueAtIndex:&i type:argumentType invocation:invocation];
+		[arguments addObject:objectValue];
+#ifdef DEBUG
+		NSLog(@"\nparam%i(%@):\n%@\n",(i-2),NSStringFromClass([objectValue class]),objectValue);
+#endif
 	}
+#ifdef DEBUG
+	NSLog(@"Hessian Request Argument End=============================\n");
+#endif
 	id result = [proxy callSynchronous:methodName withParameters:arguments];
 	[self setReturnValue:result invocation:invocation];
 }
 
+-(id)getObjectValueAtIndex:(int *)pIndex type:(const char *)type invocation:(NSInvocation*)invocation
+{
+	int index = *pIndex;
+	id objectValue = nil;
+	if (strcmp(type, @encode(BOOL)) == 0)
+	{
+		BOOL value;
+		[invocation getArgument:&value atIndex:index];
+		objectValue = [NSNumber numberWithBool:value];
+	}
+	else if (strcmp(type, @encode(int32_t)) == 0)
+	{
+		int value;
+		[invocation getArgument:&value atIndex:index];
+		objectValue = [NSNumber numberWithInteger:value];
+	} else if (strcmp(type, @encode(int64_t)) == 0)
+	{
+		int64_t value;
+		[invocation getArgument:&value atIndex:index];
+		objectValue = [NSNumber numberWithLongLong:value];
+	} else if (strcmp(type, @encode(float)) == 0)
+	{
+		float value;
+		[invocation getArgument:&value atIndex:index];
+		objectValue = [NSNumber numberWithFloat:value];
+	} else if (strcmp(type, @encode(double)) == 0)
+	{
+		double value;
+		[invocation getArgument:&value atIndex:index];
+		objectValue = [NSNumber numberWithDouble:value];
+	} else if (strcmp(type, @encode(id)) == 0)
+	{
+		void *value;
+		[invocation getArgument:&value atIndex:index];
+		objectValue = (__bridge id)value;
+	} else
+	{
+		[NSException raise:NSInvalidUnarchiveOperationException format:@"Unsupported type %s", type];
+	}
+	return objectValue;
+}
 
 -(void)setReturnValue:(id)value invocation:(NSInvocation *)invocation
 {
