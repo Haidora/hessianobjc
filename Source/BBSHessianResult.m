@@ -34,22 +34,27 @@
     return self;
 }
 
-- (id) resultValue {
-    if(resultValue == nil) {
+- (id) resultValue
+{
+    if(resultValue == nil)
+	{
         //decode data 
         //the actual return object should be the data between the 'r' and version number
         //and the end character 'z'
         //check first characters for valid return
         uint8_t * returnHeader =  malloc(sizeof(uint8_t) * 4);
-        if(!returnHeader) {
+        if(!returnHeader)
+		{
             NSLog(@"could alloc memory for result");
             return nil;
         }
         memset(returnHeader,0,4);
         [data getBytes:returnHeader length:3];
-        if(!(returnHeader[0] == 'r')) {
-            NSDictionary * userInfo = [NSDictionary dictionaryWithObject:@"Malformed response from server" 
-                                                              forKey:NSLocalizedDescriptionKey];
+        if(!(returnHeader[0] == 'r'))
+		{
+			free(returnHeader);
+            NSDictionary * userInfo = [NSDictionary dictionaryWithObject:@"Malformed response from server"
+																  forKey:NSLocalizedDescriptionKey];
             return [NSError errorWithDomain:BBSHessianObjCError
                                        code:BBSHessianProtocolBadReplyError
                                    userInfo:userInfo];
@@ -59,13 +64,14 @@
         minorVersion = returnHeader[2];
         free(returnHeader);
         void * bytes = malloc(sizeof(uint8_t)*([data length]-4));        
-        if(!bytes) {
+        if(!bytes)
+		{
             NSLog(@"could alloc memory for result");
             return nil;
         }
         [data getBytes:bytes range:NSMakeRange(3,[data length]-4)];
         //calling dataWithBytesNoCopy allows the resultsValueData to free the bytes that where malloced and is more effecient
-        NSData * resultValueData = [NSData dataWithBytesNoCopy:bytes length:[data length]-4];     
+        NSData * resultValueData = [NSData dataWithBytesNoCopy:bytes length:[data length]-4];
         BBSHessianDecoder * decoder = [[BBSHessianDecoder alloc] initForReadingWithData:resultValueData];
 		[decoder setRemoteClassPrefix:remoteClassPrefix];
         id obj =[decoder decodedObject];

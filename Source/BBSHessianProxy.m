@@ -62,17 +62,19 @@
     [request setHTTPBody:[hessianRequest data]];
     //force this header field to be text/xml... Tomcat 4 blows up otherwise
     [request setValue:@"text/xml" forHTTPHeaderField:@"Content-type"];
-   // [request setValue:@"" forHTTPHeaderField:<#(NSString *)field#>
+   // [request setValue:@"" forHTTPHeaderField:(NSString *)field
     NSHTTPURLResponse * returnResponse = nil; 
     
     NSError * requestError = nil;
     NSData * retData = [NSURLConnection sendSynchronousRequest:request 
                                              returningResponse:&returnResponse
-                                                         error:&requestError];  
-    
-    if(requestError == nil) {
-        if(returnResponse != nil) {
-            if([returnResponse statusCode] == 200) { /* all went well */
+                                                         error:&requestError];
+    if(requestError == nil)
+	{
+        if(returnResponse != nil)
+		{
+            if([returnResponse statusCode] == 200)
+			{ /* all went well */
                 //deserialize the data
                 BBSHessianResult * response = [[BBSHessianResult alloc] initForReadingWithData:retData];
 				[response setRemoteClassPrefix:remoteClassPrefix];
@@ -80,41 +82,44 @@
                 return decodedObject;
                 
             }        
-            else {
+            else
+			{
                 //create an exception poo poo response from server here
                 NSMutableDictionary * userInfo = [NSMutableDictionary dictionaryWithObject:[NSString stringWithFormat:@"%i - %@",
-                                                                                                [returnResponse statusCode],
-                                                                                                [NSHTTPURLResponse localizedStringForStatusCode:[returnResponse statusCode]]]
+																							[returnResponse statusCode],
+																							[NSHTTPURLResponse localizedStringForStatusCode:[returnResponse statusCode]]]
                                                                                     forKey:NSLocalizedDescriptionKey];
-               
                 //make sure it's NULL terminated
-                uint8_t * readData = NULL;
+                uint8_t *readData = NULL;
                 int len = [retData length]+1;
-                readData = malloc(len * sizeof(readData));  
-                if(readData == NULL) {
+                readData = malloc(len * sizeof(uint8_t));
+                if(readData == NULL)
+				{
                    NSLog(@"failed to alloc memory for binary data with len =%i",len);
                    return nil;
                 }  
                 memset(readData,0,len);   
                 [retData getBytes:(void *)readData length:[retData length]];
                 NSString * details = [NSString stringWithUTF8String:(const char *)readData];
+				free(readData);
                 [userInfo setObject:details forKey:NSLocalizedFailureReasonErrorKey];                
-                [NSError errorWithDomain:NSCocoaErrorDomain 
-                                    code:[returnResponse statusCode] 
-                                userInfo:userInfo];
+                return [NSError errorWithDomain:NSCocoaErrorDomain
+										   code:[returnResponse statusCode]
+									   userInfo:userInfo];
             }
         }
-        else {
-            [NSError errorWithDomain:NSCocoaErrorDomain 
-                                code:[returnResponse statusCode] 
-                             userInfo:[NSDictionary dictionaryWithObject:@"Response from server is nil" 
-                                                                  forKey:NSLocalizedDescriptionKey]];
+        else
+		{
+            return [NSError errorWithDomain:NSCocoaErrorDomain
+									   code:[returnResponse statusCode]
+								   userInfo:[NSDictionary dictionaryWithObject:@"Response from server is nil"
+																		forKey:NSLocalizedDescriptionKey]];
         }
     }
-    else {
+    else
+	{
         return requestError;     
     }
-
     return nil;
 }
 
