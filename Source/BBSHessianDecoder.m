@@ -406,10 +406,9 @@ static NSMutableDictionary * gClassMapping;
             }
             id value = [self decodeObjectForCode:objectTag];
             if(key != nil) {
-                if(value == nil) {
-                    value = [NSNull null];
+                if(value != nil) {
+					[dict setObject:value forKey:key];
                 }
-                [dict setObject:value forKey:key];
             }
             [dataInputStream read:&objectTag maxLength:1];  
         }
