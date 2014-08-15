@@ -332,14 +332,20 @@ static NSMutableDictionary * gClassMapping;
     if((!type) || ([type length] == 0)) {
         return nil;
     }
-
+	//get MapClass from Decoder
     Class mappedClass = nil;
     mappedClass  = [self classForClassName:type];
     if(!mappedClass) { //try the global mapping
         mappedClass = [BBSHessianDecoder classForClassName:type];
     }
+	//get MapClass substring RemoteClassPrefix
 	if (!mappedClass) {
 		NSString *localClass = [type stringByReplacingOccurrencesOfString:remoteClassPrefix?:@"" withString:@""];
+		mappedClass = NSClassFromString(localClass);
+	}
+	//get MapClass from last component
+	if (!mappedClass) {
+		NSString *localClass = [[type componentsSeparatedByString:@"."] lastObject];
 		mappedClass = NSClassFromString(localClass);
 	}
     if(mappedClass) {
