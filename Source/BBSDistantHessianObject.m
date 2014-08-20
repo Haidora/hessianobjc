@@ -89,7 +89,8 @@ static NSMethodSignature* getMethodSignatureRecursively(Protocol *p, SEL aSel)
 #ifdef DEBUG
 	NSLog(@"Hessian Request Argument End=============================\n");
 #endif
-	id result = [proxy callSynchronous:methodName withParameters:arguments];
+	//TODO: i don't know why. but it's working.
+	__weak id result = [proxy callSynchronous:methodName withParameters:arguments];
 	[self setReturnValue:result invocation:invocation];
 }
 
