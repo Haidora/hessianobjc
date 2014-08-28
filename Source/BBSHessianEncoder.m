@@ -250,21 +250,21 @@ static NSMutableDictionary * gClassMapping;
     unsigned currentPos = 0;  
     char s = 's';
     char S = 'S';    
-    while(currentLen > 0x8000) { /* 32768 or 0x8000 is the 16 bit length limit for a binary chunk */
+    while(currentLen > 0xFFFF) { /* 32768 or 0x8000 is the 16 bit length limit for a binary chunk */
         [callData appendBytes:&s length:1];
-        uint16_t sLen = CFSwapInt16HostToBig(0x800);
+        uint16_t sLen = CFSwapInt16HostToBig(0xFFFF);
         [callData appendBytes:&sLen length:sizeof(sLen)];
         //now add chunk        
-        NSString * stringChunk = [aString substringWithRange:NSMakeRange(currentPos,0x8000)];
-        [callData appendBytes:[stringChunk UTF8String] length:[stringChunk length]]; 
-        currentPos += 0x8000;
-        currentLen -= 0x8000;
+        NSString * stringChunk = [aString substringWithRange:NSMakeRange(currentPos,0xFFFF)];
+        [callData appendBytes:[stringChunk UTF8String] length:strlen([stringChunk UTF8String])];
+        currentPos += 0xFFFF;
+        currentLen -= 0xFFFF;
     }    
     [callData appendBytes:&S length:1];
     uint16_t sLen = CFSwapInt16HostToBig(currentLen);
     [callData appendBytes:&sLen length:sizeof(sLen)];
     NSString * stringChunk = [aString substringWithRange:NSMakeRange(currentPos,currentLen)];  
-    [callData appendBytes:[stringChunk UTF8String] length:[stringChunk length]];    
+    [callData appendBytes:[stringChunk UTF8String] length:strlen([stringChunk UTF8String])];
 }
 
 - (void) encodeNumber:(NSNumber *) aNumber {
