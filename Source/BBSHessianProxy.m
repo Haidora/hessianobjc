@@ -46,7 +46,9 @@
 }
 
 - (id) callSynchronous:(NSString *) methodName
-        withParameters:(NSArray *) parameters {
+		withParameters:(NSArray *) parameters
+	   timeoutInterval:(NSTimeInterval) timeoutInterval{
+	timeoutInterval = (timeoutInterval<=0)?60:timeoutInterval;
     
     BBSHessianCall * hessianRequest = [[BBSHessianCall alloc] initWithRemoteMethodName:methodName];
 	[hessianRequest setRemoteClassPrefix:remoteClassPrefix];
@@ -55,7 +57,7 @@
     
     NSMutableURLRequest * request = [[NSMutableURLRequest alloc] initWithURL:[self serviceUrl]
                                                                  cachePolicy:NSURLRequestReloadIgnoringCacheData
-                                                             timeoutInterval:60.0];
+                                                             timeoutInterval:timeoutInterval];
     //add all the paramters to the data
     [request setHTTPMethod:@"POST"];
    

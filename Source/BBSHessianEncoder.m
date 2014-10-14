@@ -246,7 +246,7 @@ static NSMutableDictionary * gClassMapping;
 
 
 - (void) encodeString:(NSString *) aString {   
-    unsigned currentLen =  [aString length];   
+    NSUInteger currentLen =  [aString length];   
     unsigned currentPos = 0;  
     char s = 's';
     char S = 'S';    
@@ -360,7 +360,7 @@ static NSMutableDictionary * gClassMapping;
 }
 
 - (void) encodeXml:(NSString *) anXmlString {
-    unsigned currentLen =  [anXmlString length];   
+    NSUInteger currentLen =  [anXmlString length];
     unsigned currentPos = 0;  
     char x = 'x';
     char X = 'X';    
@@ -392,7 +392,7 @@ static NSMutableDictionary * gClassMapping;
 }
 
 - (void) encodeData:(NSData *) someData {
-    unsigned currentLen = [someData length];   
+    NSUInteger currentLen = [someData length];
     unsigned currentPos = 0;  
     char b = 'b';
     char B = 'B';

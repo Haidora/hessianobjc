@@ -45,7 +45,9 @@
   * @param parameters is an NSArray containing the parameters that will be encoded and passed to the remote method
   */
 - (id) callSynchronous:(NSString *) methodName
-        withParameters:(NSArray *) parameters;
+		withParameters:(NSArray *) parameters
+	   timeoutInterval:(NSTimeInterval) timeoutInterval;
+
 
 /** Asynchronously call the remote service Url with a BBSHessianInvocation
   * @see BBSHessianInvocation

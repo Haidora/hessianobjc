@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSString *urlString;
 @property (nonatomic, strong) NSDictionary *classMapping;
 @property (nonatomic, strong) NSString *remoteClassPrefix;
+@property(nonatomic, assign) NSTimeInterval timeoutInterval;
 
 -(id)initWithProtocol:(Protocol *)aProtocol
 		   serviceUrl:(NSString *)urlString
