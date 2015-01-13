@@ -238,6 +238,9 @@ static NSMutableDictionary * gClassMapping;
     else if([classString isEqualToString:@"NSConcreteData"]) {
         [self encodeData:anyObject];
     }
+    else if([objClass isSubclassOfClass:[NSArray class]]) {
+        [self encodeArray:anyObject];
+    }
     else {
         //otherwise treat it like a map, the Object has to support NSCoding protocol
         [self encodeNSObject:anyObject];
