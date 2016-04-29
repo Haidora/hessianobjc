@@ -17,6 +17,8 @@
 //
 #import <Foundation/Foundation.h>
 
+static const NSString *JSESSIONID = @"JSESSIONID";
+
 @class BBSHessianInvocation;
 
 /** BBSHessianProxy acts as a facade to the underlying transport and encoder / decoder framework.

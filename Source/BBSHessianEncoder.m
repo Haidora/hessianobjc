@@ -137,7 +137,9 @@ static NSMutableDictionary * gClassMapping;
 }
 
 + (void) setClassNameMapping:(NSDictionary *) aMappingDictionary {
-    gClassMapping = [aMappingDictionary mutableCopy];
+    if (aMappingDictionary){
+        [gClassMapping addEntriesFromDictionary:[aMappingDictionary mutableCopy]];
+    }
 }
 
 - (BOOL)allowsKeyedCoding {
@@ -206,43 +208,53 @@ static NSMutableDictionary * gClassMapping;
     }
     Class objClass = [anyObject class];
     
-    NSString * classString = NSStringFromClass(objClass);
-    //TODO: research the posibilities of a more robust way of introspect class clusters
-    if([classString isEqualToString:[[NSConstantString class] description]] ||
-        [anyObject isKindOfClass:[NSString class]] || 
-        [classString isEqualToString:@"NSCFString"]) {
-        [self encodeString:(NSString*)anyObject];
+    NSString *classString = NSStringFromClass(objClass);
+    // TODO: research the posibilities of a more robust way of introspect class clusters
+    if ([anyObject isKindOfClass:[NSString class]] ||
+        [classString isEqualToString:[[NSConstantString class] description]] ||
+        [classString isEqualToString:@"NSCFString"])
+    {
+        [self encodeString:(NSString *)anyObject];
     }
-    else if([classString isEqualToString:@"NSCFBoolean"]) {
+    else if ([classString isEqualToString:@"NSCFBoolean"] ||
+             [classString isEqualToString:@"__NSCFBoolean"])
+    {
         [self encodeBool:[anyObject boolValue]];
-    }    
-    else if([anyObject isKindOfClass:[NSNumber class]]) {
+    }
+    else if ([anyObject isKindOfClass:[NSNumber class]])
+    {
         [self encodeNumber:anyObject];
     }
-    else if([anyObject isKindOfClass:[NSNull class]]) {
+    else if ([anyObject isKindOfClass:[NSNull class]])
+    {
         [self encodeNil];
     }
-    else if([objClass isKindOfClass:[NSValue class]] || 
-            [classString isEqualToString:@"NSConcreteValue"]) {
+    else if ([objClass isKindOfClass:[NSValue class]] ||
+             [classString isEqualToString:@"NSConcreteValue"])
+    {
     }
-    else if([classString isEqualToString:@"NSCFDictionary"]) {
+    else if (([objClass isSubclassOfClass:[NSDictionary class]]) ||
+             [classString isEqualToString:@"NSCFDictionary"])
+    {
         [self encodeDictionary:anyObject];
     }
-    else if([anyObject isKindOfClass:[NSDate class]] ||
-             [anyObject isKindOfClass:[NSCalendar class]]) {
-         [self encodeDate:anyObject];
-     }
-    else  if([classString isEqualToString:@"NSCFArray"]) {
-        [self encodeArray:anyObject];
-    }    
-    else if([classString isEqualToString:@"NSConcreteData"]) {
+    else if ([anyObject isKindOfClass:[NSDate class]] ||
+             [anyObject isKindOfClass:[NSCalendar class]])
+    {
+        [self encodeDate:anyObject];
+    }
+    else if ([classString isEqualToString:@"NSConcreteData"])
+    {
         [self encodeData:anyObject];
     }
-    else if([objClass isSubclassOfClass:[NSArray class]]) {
+    else if ([objClass isSubclassOfClass:[NSArray class]] ||
+             [classString isEqualToString:@"NSCFArray"])
+    {
         [self encodeArray:anyObject];
     }
-    else {
-        //otherwise treat it like a map, the Object has to support NSCoding protocol
+    else
+    {
+        // otherwise treat it like a map, the Object has to support NSCoding protocol
         [self encodeNSObject:anyObject];
     }
 }
