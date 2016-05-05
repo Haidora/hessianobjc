@@ -74,6 +74,10 @@
         NSData * resultValueData = [NSData dataWithBytesNoCopy:bytes length:[data length]-4];
         BBSHessianDecoder * decoder = [[BBSHessianDecoder alloc] initForReadingWithData:resultValueData];
 		[decoder setRemoteClassPrefix:remoteClassPrefix];
+        [classMapping enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            [decoder setClass:NSClassFromString(obj) forClassName:key];
+        }];
+        
         id obj =[decoder decodedObject];
         //TODO: ideally we should make sure the last char in the stream after the result is a 'z'
         //I am ingoring this for now
@@ -84,6 +88,11 @@
 
 - (void) dealloc {
     resultValue = nil;
+}
+
+- (void) setClassMapping:(NSDictionary *)aClassMapping
+{
+    classMapping = aClassMapping;
 }
 
 @end

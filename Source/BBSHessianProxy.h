@@ -30,6 +30,7 @@ static const NSString *JSESSIONID = @"JSESSIONID";
     NSURL * serviceUrl;
     NSURLConnection * remoteConnection;
 	NSString *remoteClassPrefix;
+    NSDictionary *classMapping;
 }
 /** Initialize with Hessian web service end point.
   */
@@ -63,6 +64,9 @@ static const NSString *JSESSIONID = @"JSESSIONID";
   * This will also allow the decoder to decode a Java Java com.bluebearstudio.test.TestObject and instantiate
   * a local TestObject:NSObject. 
   */
+
+- (void) setClassMapping:(NSDictionary *) classMapping;
+
 + (void) setClassMapping:(NSDictionary *) classMapping;
 
 + (void) setEncoderClassMapping:(NSDictionary *) encoderMapping;

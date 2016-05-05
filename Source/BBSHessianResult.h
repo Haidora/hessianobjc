@@ -26,6 +26,7 @@
     int majorVersion;
     int minorVersion;
 	NSString *remoteClassPrefix;
+    NSDictionary *classMapping;
 }
 
 -(void)setRemoteClassPrefix:(NSString *)aRemoteClassPrefix;
@@ -37,5 +38,7 @@
   * @return a decoded object from a remote call result @see BBSHessianDecoder decodeObject.
   */
 - (id) resultValue;
+
+- (void) setClassMapping:(NSDictionary *) classMapping;
 
 @end

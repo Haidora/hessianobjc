@@ -72,6 +72,7 @@ static NSMethodSignature *getMethodSignatureRecursively(Protocol *p, SEL aSel)
     BBSHessianProxy *proxy =
         [[BBSHessianProxy alloc] initWithUrl:[NSURL URLWithString:self.urlString]];
     [proxy setRemoteClassPrefix:self.remoteClassPrefix];
+    [proxy setClassMapping:self.classMapping];
     NSString *methodName = NSStringFromSelector([invocation selector]);
     methodName = [[methodName componentsSeparatedByString:@":"] firstObject];
     NSMutableArray *arguments;

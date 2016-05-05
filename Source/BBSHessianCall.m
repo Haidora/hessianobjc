@@ -76,6 +76,10 @@
         while(current = [e nextObject]) {
 			BBSHessianEncoder *encoder = [[BBSHessianEncoder alloc]init];
 			[encoder setRemoteClassPrefix:remoteClassPrefix];
+            [classMapping enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+                [encoder setClassName:key forClass:NSClassFromString(obj)];
+            }];
+            
 			[encoder encodeObject:current];
             [callData appendData:[encoder data]];
         }
@@ -94,6 +98,12 @@
     headers = nil;*/
     [self setParameters:nil];
 }
+
+- (void) setClassMapping:(NSDictionary *)aClassMapping
+{
+    classMapping = aClassMapping;
+}
+
 @end
 
 @implementation BBSHessianCall (PrivateMethods) 

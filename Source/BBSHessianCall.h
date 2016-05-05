@@ -29,6 +29,7 @@
     char minorVersion;
     /*NSMutableDictionary * headers;*/
 	NSString *remoteClassPrefix;
+    NSDictionary *classMapping;
 }
 
 
@@ -74,5 +75,7 @@
   * @return the method name the call was instantiated with.
   */ 
 - (NSString*) methodName;
+
+- (void) setClassMapping:(NSDictionary *) classMapping;
 
 @end

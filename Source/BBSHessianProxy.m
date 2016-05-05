@@ -58,6 +58,7 @@
     BBSHessianCall *hessianRequest = [[BBSHessianCall alloc] initWithRemoteMethodName:methodName];
     [hessianRequest setRemoteClassPrefix:remoteClassPrefix];
 
+    [hessianRequest setClassMapping:classMapping];
     [hessianRequest setParameters:parameters];
 //    //查询Cookie
 //    NSString *JSESSIONIDValue = [UIApplication sharedApplication].userInfo[JSESSIONID];
@@ -121,6 +122,7 @@
                 BBSHessianResult *response =
                     [[BBSHessianResult alloc] initForReadingWithData:retData];
                 [response setRemoteClassPrefix:remoteClassPrefix];
+                [response setClassMapping:classMapping];
                 id decodedObject = [response resultValue];
                 return decodedObject;
             }
@@ -237,9 +239,16 @@
 {
     [BBSHessianEncoder setClassNameMapping:encoderMapping];
 }
+
 + (void)setDecoderClassMapping:(NSDictionary *)decoderMapping
 {
     [BBSHessianDecoder setClassNameMapping:decoderMapping];
+}
+
+
+- (void) setClassMapping:(NSDictionary *)aClassMapping
+{
+    classMapping = aClassMapping;
 }
 
 - (void)dealloc
